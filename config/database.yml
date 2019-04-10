@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  pool: 30
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: <%= ENV['DB_DEV'] %>
+  username: <%= ENV['DB_DEV_USERNAME'] %>
+  password: <%= ENV['DB_DEV_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: <%= ENV['DB_PROD'] %>
+  username: <%= ENV['DB_PROD_USERNAME'] %>
+  password: <%= ENV['DB_PROD_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: <%= ENV['DB_STAGE'] %>
+  username: <%= ENV['DB_STAGE_USERNAME'] %>
+  password: <%= ENV['DB_STAGE_PASSWORD'] %>
