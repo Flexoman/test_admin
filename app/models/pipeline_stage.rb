@@ -1,0 +1,3 @@
+class PipelineStage < ApplicationRecord
+
+end

@@ -1,0 +1,3 @@
+class AccountSetting < ApplicationRecord
+
+end

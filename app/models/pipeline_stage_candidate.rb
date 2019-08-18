@@ -1,0 +1,3 @@
+class PipelineStageCandidate < ApplicationRecord
+
+end
