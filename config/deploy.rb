@@ -10,8 +10,21 @@ append :linked_dirs, 'tmp/pids', 'tmp/cache', 'tmp/sockets'
 set :deploy_user, 'deploy'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/hiro/#{fetch(:application)}"
 
+
+#################
+##   Bundler   ##
+#################
+set :bundle_jobs, 4
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
+#################
+set :bundle_flags, "--quiet"
+
+#############
+##   RVM   ##
+#############
 set :rvm_type, :user
 set :rvm_ruby_version, '2.5.1'
+#############
 
 set :assets_roles, [:web, :app]
 set :rake_roles, [:web, :db, :app]
