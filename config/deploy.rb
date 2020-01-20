@@ -5,7 +5,7 @@ set :application, "active_admin"
 set :repo_url, 'git@github.com:Flexoman/test_admin.git'
 
 set :linked_files, %w{.env}
-append :linked_dirs, 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'logs'
+append :linked_dirs, 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'log'
 
 set :deploy_user, 'deploy'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/hiro/#{fetch(:application)}"
