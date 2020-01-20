@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.2"
+lock "~> 3.11.0"
 
 set :application, "active_admin"
 set :repo_url, 'git@github.com:Flexoman/test_admin.git'
