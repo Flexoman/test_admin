@@ -31,5 +31,3 @@ set :rake_roles, [:web, :db, :app]
 
 set :puma_user, fetch(:deploy_user)
 set :puma_conf, "#{shared_path}/puma.rb"
-set :puma_access_log, File.join(shared_path, 'logs', 'puma_access.log')
-set :puma_error_log, File.join(shared_path, 'logs', 'puma_error.log')
