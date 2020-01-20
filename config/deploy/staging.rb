@@ -1,5 +1,12 @@
 set :stage, :staging
+set :rails_env, 'production'
 set :branch, 'master'
-# set :branch, ENV['REVISION'] || ENV['CIRCLE_BRANCH'] || ENV['BRANCH_NAME'] || fetch(:branch)
+set :pty, true
 
-server '18.203.28.115', user: 'deploy', roles: %w{web app}
+server('18.203.28.115',
+  user: 'deploy',
+  roles: %w{web app},
+  ssh_options: {
+    forward_agent: true,
+    auth_methods: [ 'publickey' ]
+  })

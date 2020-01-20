@@ -1,1 +1,2 @@
 class Candidate < ApplicationRecord; end;
+
