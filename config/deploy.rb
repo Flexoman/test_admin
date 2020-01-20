@@ -5,7 +5,7 @@ set :application, "active_admin"
 set :repo_url, 'git@github.com:Flexoman/test_admin.git'
 
 set :linked_files, %w{.env}
-append :linked_dirs, 'tmp/pids', 'tmp/cache', 'tmp/sockets'
+append :linked_dirs, 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'logs'
 
 set :deploy_user, 'deploy'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/hiro/#{fetch(:application)}"
@@ -31,3 +31,5 @@ set :rake_roles, [:web, :db, :app]
 
 set :puma_user, fetch(:deploy_user)
 set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_access_log, File.join(shared_path, 'logs', 'puma_access.log')
+set :puma_error_log, File.join(shared_path, 'logs', 'puma_error.log')
