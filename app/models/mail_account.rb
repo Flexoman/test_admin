@@ -1,13 +1,15 @@
 class MailAccount < ApplicationRecord
 
-  attr_accessor :email,
-                :password,
+  attr_accessor :password,
                 :imap_server,
                 :imap_port,
                 :imap_ssl,
                 :smtp_server,
                 :smtp_port,
-                :smtp_ssl
+                :smtp_ssl,
+                :code
+
+  belongs_to :user
 
   enum acc_type: %w{
     hiro
@@ -28,6 +30,27 @@ class MailAccount < ApplicationRecord
 
   def smtp
     MongoDb::Credentials::Smtp.find(self.smtp_setting_mongo_uid) rescue nil
+  end
+
+  def stop_worker!(klass, uid)
+    schedule = Sidekiq::ScheduledSet.new
+    queues = Sidekiq::Queue.new('default')
+    retying = Sidekiq::RetrySet.new
+
+    retying.select do |job|
+      job.klass == klass &&
+      job.args[0] == uid
+    end.map(&:delete)
+
+    schedule.select do |job|
+      job.klass == klass &&
+      job.args[0] == uid
+    end.map(&:delete)
+
+    queues.select do |job|
+      job.klass == klass &&
+      job.args[0] == uid
+    end.map(&:delete)
   end
 
 

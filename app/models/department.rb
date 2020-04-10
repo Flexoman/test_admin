@@ -1,5 +1,13 @@
 class Department < ApplicationRecord
 
-  has_many :job
+  DEFAULT_TITLES = %w[
+    Marketing
+    Accounting
+    Sales
+    IT
+    HR
+  ]
+
+  has_many :jobs
 
 end
