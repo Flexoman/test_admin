@@ -11,6 +11,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
+gem 'awesome_print'
 
 gem 'rails', '~> 5.1.6'
 gem 'pg'
